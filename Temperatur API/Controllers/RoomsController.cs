@@ -28,6 +28,20 @@ namespace Temperatur_API.Controllers
             return Ok(await _context.Rooms.ToListAsync());
         }
 
+        // POST: Temperatures/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        public async Task<IActionResult> Create(Room room)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(room);
+                await _context.SaveChangesAsync();
+            }
+            return Ok(room);
+        }
+
         private bool TemperatureExists(int id)
         {
             return _context.Rooms.Any(e => e.ID == id);

@@ -8,13 +8,13 @@ while True:
         humidity, temperature = dht.read_retry(dht.DHT22, DHT)
     
         print('Temp=' + str(temperature) + '*C')
-        tempUrl = 'http://192.168.10.142:5000/temperatures'
+        tempUrl = 'https://api.temp.computerx.dk/temperatures'
         tempContent = {'TemperatureCentigrade': temperature, 'Room':{'RoomName': 'Kantinen'}}
         tempRequest = requests.post(tempUrl, json = tempContent)
         print(tempRequest.text)
 
         print('Humidity=' + str(humidity) + '%')
-        humUrl = 'http://192.168.10.142:5000/Moistures'
+        humUrl = 'https://api.temp.computerx.dk/Moistures'
         humContent = {'MoistureValue': humidity, 'Room':{'RoomName': 'Kantinen'}}
         humRequest = requests.post(humUrl, json = humContent)
         print(humRequest.text)

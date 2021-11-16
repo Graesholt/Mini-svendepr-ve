@@ -1,0 +1,22 @@
+services:
+  temperaturapi:
+    build:
+      context: C:\Users\mg\Dropbox\Documents\Lektier\5. Tech College\9. Hovedforl°b
+        5\Mini svendepr°ve\Temperatur API
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    ports:
+    - published: 5000
+      target: 80
+    - target: 80
+  temperaturdatabase:
+    container_name: temperaturdatabase
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: Passw0rd123!
+    image: mcr.microsoft.com/mssql/server
+    ports:
+    - published: 1433
+      target: 1433
+version: '3.4'

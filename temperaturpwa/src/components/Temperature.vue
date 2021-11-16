@@ -15,7 +15,7 @@ import { ref } from "vue";
 var Rooms = ref([]); // Databinded i HTML'en
 
 axios
-  .get("http://localhost:5000/Rooms")
+  .get("https://api.temp.computerx.dk/Rooms")
   .then(function (response) {
     Rooms.value = response.data;
 
@@ -26,7 +26,7 @@ axios
 async function sendlatestRequest() { // Opdater temperaturelabels
   Rooms.value.forEach(async (room) => {
     await axios
-      .get("http://localhost:5000/temperatures/latest/" + room.roomName)
+      .get("https://api.temp.computerx.dk/temperatures/latest/" + room.roomName)
       .then(function (response) {
         room.temperaturelabel = response.data + " °C";
         console.log(response.data);
@@ -37,7 +37,7 @@ async function sendlatestRequest() { // Opdater temperaturelabels
 async function sendlatestchartRequest() { // Opdater chartData
   Rooms.value.forEach(async (room) => {
     await axios
-      .get("http://localhost:5000/temperatures/latestchart/" + room.roomName)
+      .get("https://api.temp.computerx.dk/temperatures/latestchart/" + room.roomName)
       .then(function (response) {
         room.chartData = [];
         var i1 = -response.data.length;

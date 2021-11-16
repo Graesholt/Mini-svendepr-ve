@@ -52,7 +52,7 @@ void loop()
 
     if (WiFi.status() == WL_CONNECTED) // If WiFi connected
     {
-      http.begin(client, "http://192.168.10.142:5000/temperatures"); // Request destination
+      http.begin(client, "http://api.temp.computerx.dk:5000/temperatures"); // Request destination
       http.addHeader("Content-Type", "application/json"); // Request content-type header
       String content = "{\"TemperatureCentigrade\":" + String(event.temperature) + ", \"Room\":{\"RoomName\": \"H5PD091121\"}}"; // Request content
 
@@ -83,7 +83,7 @@ void loop()
 
     if (WiFi.status() == WL_CONNECTED) // If WiFi connected
     {
-      http.begin(client, "http://192.168.10.142:5000/moistures"); // Request destination
+      http.begin(client, "http://api.temp.computerx.dk:5000/moistures"); // Request destination
       http.addHeader("Content-Type", "application/json"); // Request content-type header
       String content = "{\"MoistureValue\":" + String(event.relative_humidity) + ", \"Room\":{\"RoomName\": \"H5PD091121\"}}"; // Request content
 
